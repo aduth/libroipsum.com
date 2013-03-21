@@ -1,0 +1,32 @@
+// Paths
+$root: '';
+
+// Base Colors
+$base-font-color: #57534A;
+$base-link-color: #187DBC;
+$base-bg-color: #F8F7F5;
+
+$muted-red: darken(desaturate(red, 55%), 5%);
+$button-green: #5bb75b;
+$muted-blue: darken(desaturate(blue, 55%), 15%);
+
+// Typography
+$font-family: open-sans, Helvetica, Arial, sans-serif;
+
+// Component specific colors
+$app-view-border-color: desaturate(lighten($base-font-color, 56%), 20%);
+$app-view-cell-border-color: lighten($app-view-border-color, 6%);
+$app-view-cell-background-color: #fcfcfc;
+
+// Media queries
+@mixin breakpoint($point) {
+  @if $point == medium {
+    @media (max-width: 950px) { @content; }
+  }
+  @if $point == small {
+    @media (max-width: 810px) { @content; }
+  }
+  @if $point == ad-break {
+    @media (max-width: 480px) { @content; }
+  }
+}

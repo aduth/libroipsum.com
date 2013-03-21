@@ -1,0 +1,46 @@
+body {
+    padding: 0.8em 0;
+    background: $base-bg-color url($root + 'img/square_bg.png') repeat;
+    color: $base-font-color;
+    font-family: $font-family;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @extend .bold;
+    color: darken($base-font-color, 10%);
+}
+
+b, strong {
+    @extend .bold;
+}
+
+a {
+    &, &:link, &:visited {
+        color: $base-link-color;
+        text-decoration: none;
+        border-bottom: 1px dotted $base-link-color;
+    }
+
+    &:hover {
+        color: lighten($base-link-color, 20%);
+        border-bottom: 1px dotted lighten($base-link-color, 20%);
+    }
+}
+
+.clearfix {
+    @include clearfix;
+}
+
+.hide {
+    display: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 55em;
+    margin: 0 auto;
+
+    @include breakpoint(small) {
+        width: 100%;
+    }
+}
