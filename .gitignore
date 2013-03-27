@@ -3,3 +3,5 @@ npm-debug.log
 config-aws.json
 .sass-cache
 *.gz
+
+sources.json
