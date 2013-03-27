@@ -214,7 +214,8 @@
 
                     app.renderText(generatedText);
                 }
-            } else {
+            } else if (!app.activeRequest) {
+                app.activeRequest = true;
                 app.renderText(text.loading);
 
                 var requestUrl = config.apiUrlBase +
@@ -227,6 +228,8 @@
                     app.renderText(data.text);
                 }).error(function(e) {
                     app.renderText(text.apiFailed);
+                }).complete(function() {
+                    app.activeRequest = false;
                 });
             }
         },
