@@ -2,8 +2,6 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
 
-        aws: grunt.file.readJSON('config-aws.json'), // SECRET
-
         sass: {
             prod: {
                 options: {
@@ -83,30 +81,6 @@ module.exports = function(grunt) {
 
         curl: {
             'sources.json': 'http://api.libroipsum.com/sources.json'
-        },
-
-        s3: {
-            prod: {
-                key: '<%= aws.key %>',
-                secret: '<%= aws.secret %>',
-                bucket: '<%= aws.bucket %>',
-                access: 'public-read',
-                upload: [
-                    {
-                        rel: './',
-                        src: ['index.html', 'robots.txt', 'obj/*.*', '!js/*.js', '!css/*.css', '!css/img/*.*' ],
-                        dest: '/',
-                        gzip: true
-                    },
-                    {
-                        rel: './',
-                        src: ['favicon.ico', 'js/*.js', 'css/*.css', 'css/img/*.*'],
-                        dest: '/',
-                        gzip: true,
-                        headers: { 'Cache-Control': 'public, max-age=' + (60 * 60 * 24 * 365) }
-                    }
-                ]
-            }
         }
 
     });
@@ -117,10 +91,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-templater');
     grunt.loadNpmTasks('grunt-curl');
-    grunt.loadNpmTasks('grunt-s3');
 
     grunt.registerTask('default', ['sass:dev', 'template:dev', 'watch']);
     grunt.registerTask('release', ['sass:prod', 'uglify', 'curl', 'template:prod', 'htmlmin']);
-    grunt.registerTask('publish', ['release', 's3']);
     grunt.registerTask('sources', ['curl']);
 };

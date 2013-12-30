@@ -11,7 +11,6 @@
     "grunt-templater": "0.0.3-1",
     "grunt-contrib-uglify": "~0.1.2",
     "grunt-curl": "~0.5.0",
-    "grunt-contrib-htmlmin": "~0.1.1",
-    "grunt-s3": "git://github.com/pifantastic/grunt-s3.git"
+    "grunt-contrib-htmlmin": "~0.1.1"
   }
 }
